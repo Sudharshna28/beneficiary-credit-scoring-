@@ -1,0 +1,13 @@
+# Node (React frontend)
+frontend/node_modules/
+frontend/build/
+
+# Python (Flask backend)
+backend/__pycache__/
+backend/*.pyc
+backend/venv/
+backend/*.env
+
+# OS files
+.DS_Store
+Thumbs.db

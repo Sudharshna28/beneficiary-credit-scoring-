@@ -1,7 +1,6 @@
-// src/CreditForm.js
 import React, { useState } from "react";
 import axios from "axios";
-import "../App.css"; // Make sure CSS is imported
+import "../App.css";
 
 function CreditForm({ onResult }) {
   const [formData, setFormData] = useState({
@@ -57,46 +56,73 @@ function CreditForm({ onResult }) {
   };
 
   return (
-    <div className="form-card">
-      <h2 className="form-title">Beneficiary Credit Scoring</h2>
-      <form onSubmit={handleSubmit} className="credit-form">
-        <input type="number" name="person_age" placeholder="Age" onChange={handleChange} required className="input-field" />
-        <input type="number" name="person_income" placeholder="Income" onChange={handleChange} required className="input-field" />
-        <select name="person_home_ownership" onChange={handleChange} className="input-field">
-          <option value="RENT">RENT</option>
-          <option value="OWN">OWN</option>
-          <option value="MORTGAGE">MORTGAGE</option>
-          <option value="OTHER">OTHER</option>
-        </select>
-        <input type="number" name="person_emp_length" placeholder="Years Employed" onChange={handleChange} required className="input-field" />
-        <select name="loan_intent" onChange={handleChange} className="input-field">
-          <option value="PERSONAL">PERSONAL</option>
-          <option value="EDUCATION">EDUCATION</option>
-          <option value="MEDICAL">MEDICAL</option>
-          <option value="VENTURE">VENTURE</option>
-          <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
-        </select>
-        <select name="loan_grade" onChange={handleChange} className="input-field">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-        </select>
-        <input type="number" name="loan_amnt" placeholder="Loan Amount" onChange={handleChange} required className="input-field" />
-        <input type="number" step="0.01" name="loan_int_rate" placeholder="Interest Rate %" onChange={handleChange} required className="input-field" />
-        <input type="number" step="0.01" name="loan_percent_income" placeholder="Loan % of Income" onChange={handleChange} required className="input-field" />
-        <select name="cb_person_default_on_file" onChange={handleChange} className="input-field">
-          <option value={0}>No Default</option>
-          <option value={1}>Default</option>
-        </select>
-        <input type="number" name="cb_person_cred_hist_length" placeholder="Credit History Length" onChange={handleChange} required className="input-field" />
-        <button type="submit" disabled={loading} className="submit-button">
-          {loading ? "Predicting..." : "Predict"}
-        </button>
-      </form>
-      {error && <p className="error-text">{error}</p>}
-    </div>
+    <div className="form-wrapper">
+  <div className="form-card">
+    <h2>Credit Scoring Form</h2>
+
+    <form onSubmit={handleSubmit}>
+      <label className="form-label">Age</label>
+      <input className="form-input" type="number" name="person_age" placeholder="Enter Age" onChange={handleChange} required />
+
+      <label className="form-label">Income</label>
+      <input className="form-input" type="number" name="person_income" placeholder="Enter Annual Income" onChange={handleChange} required />
+
+      <label className="form-label">Home Ownership</label>
+      <select className="form-select" name="person_home_ownership" onChange={handleChange}>
+        <option value="RENT">RENT</option>
+        <option value="OWN">OWN</option>
+        <option value="MORTGAGE">MORTGAGE</option>
+        <option value="OTHER">OTHER</option>
+      </select>
+
+      <label className="form-label">Years Employed</label>
+      <input className="form-input" type="number" name="person_emp_length" placeholder="Years Employed" onChange={handleChange} required />
+
+      <label className="form-label">Loan Intent</label>
+      <select className="form-select" name="loan_intent" onChange={handleChange}>
+        <option value="PERSONAL">PERSONAL</option>
+        <option value="EDUCATION">EDUCATION</option>
+        <option value="MEDICAL">MEDICAL</option>
+        <option value="VENTURE">VENTURE</option>
+        <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
+      </select>
+
+      <label className="form-label">Loan Grade</label>
+      <select className="form-select" name="loan_grade" onChange={handleChange}>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+      </select>
+
+      <label className="form-label">Loan Amount</label>
+      <input className="form-input" type="number" name="loan_amnt" placeholder="Loan Amount" onChange={handleChange} required />
+
+      <label className="form-label">Interest Rate %</label>
+      <input className="form-input" type="number" step="0.01" name="loan_int_rate" placeholder="Interest Rate %" onChange={handleChange} required />
+
+      <label className="form-label">Loan % of Income</label>
+      <input className="form-input" type="number" step="0.01" name="loan_percent_income" placeholder="Loan % of Income" onChange={handleChange} required />
+
+      <label className="form-label">Previous Default</label>
+      <select className="form-select" name="cb_person_default_on_file" onChange={handleChange}>
+        <option value={0}>No Default</option>
+        <option value={1}>Default</option>
+      </select>
+
+      <label className="form-label">Credit History Length</label>
+      <input className="form-input" type="number" name="cb_person_cred_hist_length" placeholder="Years of Credit History" onChange={handleChange} required />
+
+      <button className="predict-btn" type="submit" disabled={loading}>
+        {loading ? "Predicting..." : "Predict"}
+      </button>
+    </form>
+
+    {error && <p className="error-msg">{error}</p>}
+  </div>
+</div>
+
   );
 }
 

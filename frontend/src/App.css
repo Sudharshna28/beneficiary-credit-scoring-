@@ -1,95 +1,249 @@
-/* App.css */
-
-/* Body styling */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
+/* Full page background */
+.form-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #9c27b0, #ff6ec4);
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
 }
 
-/* Centered form card */
+/* White Card */
 .form-card {
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  width: 450px;
+  padding: 35px 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 
-/* Form headings */
+/* Title */
 .form-card h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  color: #222;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* Form layout */
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Input label */
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 5px;
   color: #333;
 }
 
 /* Input fields */
-.form-card input,
-.form-card select {
+.form-input,
+.form-select {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0 16px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d3d3d3;
+  font-size: 15px;
+  background: #fafafa;
 }
 
-/* Buttons */
-.form-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #9c27b0;
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.2);
 }
 
-.form-card button:hover {
-  background-color: #0056b3;
-}
-
-/* Result Card */
-.result-card {
-  max-width: 500px;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-/* Approved / Rejected status */
-.status-approved {
-  color: #28a745;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.status-rejected {
-  color: #dc3545;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* Probability bar */
-.probability-bar {
-  height: 20px;
-  border-radius: 10px;
-  background-color: #e0e0e0;
+/* Predict button */
+.predict-btn {
   margin-top: 10px;
-  overflow: hidden;
+  padding: 13px;
+  border: none;
+  border-radius: 25px;
+  background: #9c27b0;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.probability-fill {
-  height: 100%;
-  background-color: #007bff;
-  width: 0%;
+.predict-btn:hover {
+  background: #7a1f8e;
+}
+
+/* Result box (for prediction output) */
+.result-box {
+  margin-top: 22px;
+  background: #f3e8ff;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #53087a;
   text-align: center;
-  color: white;
-  font-weight: bold;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 400px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2d3748;
+}
+
+.form-container label {
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+    color: #4a5568;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-container button {
+    width: 100%;
+    background: #2563eb;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-container button:hover {
+    background: #1d4ed8;
+}
+
+/* Dashboard styling */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 40px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #2563eb;
+}
+
+.card .value {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.chart-container {
+    margin: 30px auto;
+    width: 80%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Dashboard layout */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* Panels */
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Section title */
+.section-title {
+  margin-bottom: 18px;
+  color: #2b6cb0;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Placeholder message */
+.empty-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #555;
+}
+
+.dashboard-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2b6cb0;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  padding: 18px;
+  background: #f7fafc;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }

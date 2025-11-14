@@ -1,35 +1,22 @@
-
-
 # --- Imports ---
 import pandas as pd
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')  
-import matplotlib.pyplot as plt
-import seaborn as sns
 import os
-
-
+import pickle
 from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (
-    accuracy_score,
-    confusion_matrix,
-    classification_report,
-    roc_curve,
-    roc_auc_score
-)
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-# --- Create folders ---
-os.makedirs("plots", exist_ok=True)
-os.makedirs("data", exist_ok=True)
+# --- Paths ---
+BASE_DIR = os.path.dirname(__file__)
+DATA_PATH = os.path.join(BASE_DIR, '..', 'data', 'credit_risk_dataset.csv')
+MODELS_DIR = os.path.join(BASE_DIR, '..', 'models')
+os.makedirs(MODELS_DIR, exist_ok=True)
 
-
-df = pd.read_csv('data/credit_risk_dataset.csv')
+# --- Load CSV ---
+df = pd.read_csv(DATA_PATH)
 print("✅ Data Loaded Successfully!")
-print(f"Shape of Dataset: {df.shape}\n")
 
 # Fill missing values
 df['person_emp_length'] = df['person_emp_length'].fillna(df['person_emp_length'].median())
